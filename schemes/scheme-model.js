@@ -3,7 +3,7 @@ const db = require('../data/dbConfig');
 module.exports = {
     find,
     findById,
-    // findSteps,
+    findSteps,
     add,
     update,
     remove
@@ -16,18 +16,21 @@ function find() {
 
 // a scheme or null
 function findById(id) {
-    return db('schemes').where({ id });
+    return db('schemes')
+    .where({ id })
+    .first()
 }
 // tested in Postman
 
 // // SELECT s.id, s.name, s.username FROM schemes AS s
 // // JOIN steps AS st ON s.st_id = st.id
-// function findSteps(step_id) {
-//     return db('schemes as s')
-//     .join('steps as st', 's.st_id', 's.step')
-//     .select('s.id', 's.name', )
-//     .where({ step_id })
-// }
+// id: 17, scheme_name: 'Find the Holy Grail', step_number: 1, instructions: 'quest'}
+function findSteps(id) {
+    return db('steps as st')
+    .join('schemes as s', 's.id', 'st.scheme_id')
+    .select('s.scheme_name', 'st.step_number', 'st.instructions')
+    .where({ scheme_id:id })
+}
 
 // resolves to newly created scheme
 function add(scheme) {
