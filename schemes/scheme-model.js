@@ -22,14 +22,15 @@ function findById(id) {
 }
 // tested in Postman
 
-// // SELECT s.id, s.name, s.username FROM schemes AS s
+// // SELECT s.id, s.scheme_name, st.step_number st.instructions
 // // JOIN steps AS st ON s.st_id = st.id
 // id: 17, scheme_name: 'Find the Holy Grail', step_number: 1, instructions: 'quest'}
+// Still having issues with this one
 function findSteps(id) {
-    return db('steps as st')
-    .join('schemes as s', 's.id', 'st.scheme_id')
-    .select('s.scheme_name', 'st.step_number', 'st.instructions')
-    .where({ scheme_id:id })
+    return db('schemes as s')
+    .join('steps as st', 's.id', 'st.scheme_id')
+    .select('s.id', 's.scheme_name', 'st.step_number', 'st.instructions')
+    .where({ scheme_id: id })
 }
 
 // resolves to newly created scheme
