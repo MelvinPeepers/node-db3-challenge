@@ -13,6 +13,7 @@ router.get('/', (req, res) => {
     res.status(500).json({ message: 'Failed to get schemes' });
   });
 });
+//http://localhost:5000/api/schemes tested in Insomnia
 
 router.get('/:id', (req, res) => {
   const { id } = req.params;
@@ -29,6 +30,8 @@ router.get('/:id', (req, res) => {
     res.status(500).json({ message: 'Failed to get schemes' });
   });
 });
+// http://localhost:5000/api/schemes/1 tested in Insomnia
+
 
 router.get('/:id/steps', (req, res) => {
   const { id } = req.params;
@@ -45,6 +48,7 @@ router.get('/:id/steps', (req, res) => {
     res.status(500).json({ message: 'Failed to get steps' });
   });
 });
+// http://localhost:5000/api/schemes/1/steps test in Insomnia
 
 router.post('/', (req, res) => {
   const schemeData = req.body;
@@ -57,6 +61,7 @@ router.post('/', (req, res) => {
     res.status(500).json({ message: 'Failed to create new scheme' });
   });
 });
+// http://localhost:5000/api/schemes/ POST tested in Insomia 
 
 router.post('/:id/steps', (req, res) => {
   const stepData = req.body;
@@ -97,6 +102,7 @@ router.put('/:id', (req, res) => {
     res.status(500).json({ message: 'Failed to update scheme' });
   });
 });
+// http://localhost:5000/api/schemes/2 Tested in Insomia
 
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
@@ -113,5 +119,6 @@ router.delete('/:id', (req, res) => {
     res.status(500).json({ message: 'Failed to delete scheme' });
   });
 });
+// http://localhost:5000/api/schemes/8 Tested in Insomia
 
 module.exports = router;
